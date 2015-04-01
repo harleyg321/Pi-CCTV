@@ -34,13 +34,15 @@ while True:
 	if(pi_free_space() < 5000):
 		#pi is low on space (unlikely, means NAS is not accessible)
 		pi_folders = folder_listing(RAW)
-		shutil.rmtree(RAW + "/" + pi_folders[0])
+		if len(pi_folders) > 0:
+			shutil.rmtree(RAW + "/" + pi_folders[0])
 
 	if check_drive():	
 		if(store_free_space() < 5000):
 			#NAS is low on space, delete a day
 			store_folders = folder_listing(FINAL)
-			shutil.rmtree(FINAL + "/" + store_folders[0])
-			shutil.rmtree("/mnt/share/trashbox/cctv")
+			if len(store_folders) > 0:
+				shutil.rmtree(FINAL + "/" + store_folders[0])
+				shutil.rmtree("/mnt/share/trashbox/cctv")
 
 	time.sleep(60)
