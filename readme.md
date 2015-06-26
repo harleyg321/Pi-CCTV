@@ -1,12 +1,9 @@
-# CCTC for the Raspberry pi
+# CCTV for the Raspberry pi
 
-This repository consists of three key files
+This repository consists of two key files
 
 ##### record.py
-Record uninterrupted footage to the local filesystem, splitting files into 10 minute segments.
-
-##### convert.py
-Use MP4Box to add the h264 files into a mp4 container saved on a network share.
+Record uninterrupted footage in 1 hour segments, piped through avconv/ffmpeg to an mp4 container.
 
 ##### housekeeping.py
-Ensure the network share and local storage don't fill up. Under normal operation the local filesystem will be kept clear by the conversion process.
+Ensure the network share doesn't reach 100% disk usage.
